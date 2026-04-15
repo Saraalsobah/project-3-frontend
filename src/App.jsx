@@ -4,7 +4,9 @@ import Homepage from './pages/Homepage';
 import SignUp from './pages/Signup';
 import SignIn from './pages/SignIn';
 import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
+import RestaurantListPage from './pages/RestaurantListPage'
+import RestaurantDetailsPage from './pages/RestaurantDetailsPage'
+import RestaurantFormPage from './pages/RestaurantFormPage'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,10 +30,12 @@ function App() {
       <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/sign-up" element={!user ? <SignUp /> : <Navigate to='/dashboard'/>} />
-        <Route path="/sign-in" element={!user ? <SignIn setUser={setUser} /> : <Navigate to='/dashboard'/>} />
-        <Route path="/dashboard" element={user ? <Dashboard user={user} /> : <Navigate to='/sign-in'/>} />
-
+        <Route path="/sign-up" element={!user ? <SignUp /> : <Navigate to="/restaurants" />} />
+        <Route path="/sign-in" element={!user ? <SignIn setUser={setUser} /> : <Navigate to="/restaurants" />} />
+        <Route path="/restaurants" element={<RestaurantListPage />} />
+        <Route path="/restaurants/:restaurantId" element={<RestaurantDetailsPage user={user} />} />
+        <Route path="/restaurants/new" element={user ? <RestaurantFormPage /> : <Navigate to="/sign-in" />}/>
+        <Route path="/restaurants/:restaurantId/edit" element={user ? <RestaurantFormPage user={user} /> : <Navigate to="/sign-in" />}/>
       </Routes>
     </div>
   );

@@ -9,15 +9,15 @@ function Navbar({ user, setUser }) {
   }
 
   return (
-    <div>
+    <nav>
       {/* Routes seen by everyone */}
-      <Link className='nav-item' to='/'>Homepage</Link>
+      <Link className='nav-item' to='/'>973Bites</Link>
+      <Link className='nav-item' to='/restaurants'>Restaurants</Link>
 
       {user ? (
         // Links for protected routes only for logged in users
         <>
-        <Link className='nav-item' to='/dashboard'>Dashboard</Link>
-
+        <Link className='nav-item' to='/restaurants/new'>Add Restaurant</Link>
         <span className='nav-item'>{user.username}</span>
        
         <button className='nav-item' onClick={logOut}>Log Out</button>
@@ -34,7 +34,7 @@ function Navbar({ user, setUser }) {
         </>
       )
       }
-    </div>
+    </nav>
   )
 }
 
