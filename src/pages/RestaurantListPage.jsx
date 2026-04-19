@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { Link } from "react-router"
 import { useNavigate } from "react-router"
+import RestaurantCard from "../components/RestaurantCard"
 
 
 function RestaurantListPage({ user }) {
@@ -28,13 +28,9 @@ function RestaurantListPage({ user }) {
 
       <div>
         {restaurants.map((restaurant) => (
-          <div key={restaurant._id}>
-            <img src={restaurant.image} alt={restaurant.name}/>
-            <h3>{restaurant.name}</h3>
-            <p>{restaurant.cuisine}</p>
-            <p>{restaurant.area}</p>
-            <Link to={`/restaurants/${restaurant._id}`}> See Details </Link>
-          </div>
+          <RestaurantCard key={restaurant._id}
+          restaurant={restaurant}
+          />
         ))}
       </div>
       {user && (
