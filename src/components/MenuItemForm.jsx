@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router'
 
 function MenuItemForm() {
 
-  const { restaurantId } = useParams() 
+  const { restaurantId, menuItemId } = useParams() 
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -13,6 +13,18 @@ function MenuItemForm() {
     category: ''
   })
 
+   async function getMenuItemDetails() {
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}`)
+    const menuItem = res.data.menuItems.find(function(item) {return item._id == menuItemId})
+    setFormData(menuItem)
+  }
+
+  useEffect(() => {
+    if (menuItemId) {
+      getMenuItemDetails()
+    }
+  }, [])
+  
   function handleChange(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
@@ -21,7 +33,12 @@ function MenuItemForm() {
     event.preventDefault()
     try {
       const token = localStorage.getItem('token')
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}/menu-items`, formData, { headers: { Authorization: `Bearer ${token}`} })
+      if (menuItemId) {
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}/menu-items/${menuItemId}`, formData, { headers: { Authorization: `Bearer ${token}` } })
+      }
+      else{
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}/menu-items`, formData, { headers: { Authorization: `Bearer ${token}`} })
+      }
       navigate(`/restaurants/${restaurantId}`)
     }
 
@@ -33,7 +50,7 @@ function MenuItemForm() {
   return (
 
     <div>
-      <h1>Add New Dish</h1>
+      <h1>{menuItemId ? 'Edit Dish' : 'Add New Dish'}</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Dish Name:</label>
         <input name="name" value={formData.name} onChange={handleChange} />
@@ -51,7 +68,7 @@ function MenuItemForm() {
           <option value="Side">Side</option>
         </select>
         
-        <button type="submit">Add to Menu</button>
+        <button type="submit">{menuItemId ? 'Save Changes' : 'Add to Menu'}</button>
         <button type="button" onClick={() => navigate(`/restaurants/${restaurantId}`)}>Cancel</button>
       </form>
     </div>

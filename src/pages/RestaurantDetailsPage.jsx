@@ -57,7 +57,7 @@ function RestaurantDetailsPage({ user }) {
 
           <button onClick={handleDelete}>Delete</button>
 
-          <button onClick={() => navigate(`/restaurants/${restaurantId}/menu/new`)}>
+          <button onClick={() => navigate(`/restaurants/${restaurantId}/menu-items`)}>
             Add Menu Item
           </button>
         </>
