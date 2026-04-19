@@ -32,7 +32,7 @@ function MenuItemList({ menuItems, isOwner, restaurantId, refresh }) {
 
           {isOwner && (
             <>
-              <button onClick={() => navigate(`/restaurants/${restaurantId}/menu/${item._id}/edit`)}>
+              <button onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/${item._id}`)}>
                 Edit
               </button>
 
