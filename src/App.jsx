@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import RestaurantListPage from './pages/RestaurantListPage'
 import RestaurantDetailsPage from './pages/RestaurantDetailsPage'
 import RestaurantFormPage from './pages/RestaurantFormPage'
+import MenuItemForm from './components/MenuItemForm'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,9 +34,11 @@ function App() {
         <Route path="/sign-up" element={!user ? <SignUp /> : <Navigate to="/restaurants" />} />
         <Route path="/sign-in" element={!user ? <SignIn setUser={setUser} /> : <Navigate to="/restaurants" />} />
         <Route path="/restaurants" element={<RestaurantListPage />} />
-        <Route path="/restaurants/:restaurantId" element={<RestaurantDetailsPage user={user} />} />
         <Route path="/restaurants/new" element={user ? <RestaurantFormPage /> : <Navigate to="/sign-in" />}/>
+        <Route path="/restaurants/:restaurantId" element={<RestaurantDetailsPage user={user} />} />
         <Route path="/restaurants/:restaurantId/edit" element={user ? <RestaurantFormPage user={user} /> : <Navigate to="/sign-in" />}/>
+        <Route path="/restaurants/:restaurantId/menu-items" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
+       
       </Routes>
     </div>
   );
