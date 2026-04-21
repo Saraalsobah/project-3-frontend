@@ -7,7 +7,6 @@ function RestaurantDetailsPage({ user }) {
   const { restaurantId } = useParams()
   const navigate = useNavigate()
 
-  
   const [restaurant, setRestaurant] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
 
@@ -25,13 +24,14 @@ function RestaurantDetailsPage({ user }) {
     getRestaurant()
   }, [])
 
-  async function handleDelete(item_id) {
+  async function handleDelete() {
     try {
       const token = localStorage.getItem("token")
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${item_id}`,
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
+
       setShowConfirm(false)
       navigate("/restaurants")
     }
@@ -45,31 +45,27 @@ function RestaurantDetailsPage({ user }) {
   const isOwner = user && restaurant.author?._id === user._id
 
   return (
-    <div className="restaurant-details-page">
+    <div>
       <img src={restaurant.logourl} alt={restaurant.name} />
       <h1>{restaurant.name}</h1>
       <p>{restaurant.cuisine}</p>
       <p>{restaurant.location}</p>
 
-
       {isOwner && (
         <>
           <button onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
-            Edit
+            Edit Restaurant
           </button>
-          <button onClick={() => setShowConfirm(true)}>Delete</button>
-          {showConfirm && (
-            <div>
+
+          {!showConfirm ? (
+            <button onClick={() => setShowConfirm(true)}>Delete Restaurant</button>
+          ) : (
+            <div className="confirmation-box">
               <p>Are you sure you want to delete?</p>
-              <button onClick={handleDelete}>Yes</button>
+              <button onClick={handleDelete}>Yes, Delete</button>
               <button onClick={() => setShowConfirm(false)}>Cancel</button>
             </div>
           )}
-          <button
-            style={{ marginBottom: '1rem' }}
-            onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/new`)}>
-            Add Menu Item
-          </button>
         </>
       )}
 
