@@ -9,6 +9,7 @@ import RestaurantDetailsPage from './pages/RestaurantDetailsPage'
 import RestaurantFormPage from './pages/RestaurantFormPage'
 import MenuItemForm from './components/MenuItemForm'
 import MyRestaurantsPage from './pages/MyRestaurantsPage'
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
