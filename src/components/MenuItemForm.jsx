@@ -49,7 +49,7 @@ function MenuItemForm() {
   }
 
   return (
-    <div className="add-resturent-form">
+    <div className="add-menu-item-form">
       <form onSubmit={handleSubmit} className="style-border-form">
         <h1>{menuItemId ? 'Edit Dish' : 'Add New Dish'}</h1>
 

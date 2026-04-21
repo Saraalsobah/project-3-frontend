@@ -39,7 +39,7 @@ function App() {
         <Route path="/restaurants/new" element={user ? <RestaurantFormPage /> : <Navigate to="/sign-in" />}/>
         <Route path="/restaurants/:restaurantId" element={<RestaurantDetailsPage user={user} />} />
         <Route path="/restaurants/:restaurantId/edit" element={user ? <RestaurantFormPage user={user} /> : <Navigate to="/sign-in" />}/>
-        <Route path="/restaurants/:restaurantId/menu-items" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
+        <Route path="/restaurants/:restaurantId/menu-items/new" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
         <Route path="/restaurants/:restaurantId/menu-items/:menuItemId" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
         <Route path="/my-restaurants" element={user ? <MyRestaurantsPage user={user} /> : <Navigate to="/sign-in" />} />
 
