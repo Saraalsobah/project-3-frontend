@@ -8,6 +8,7 @@ import RestaurantListPage from './pages/RestaurantListPage'
 import RestaurantDetailsPage from './pages/RestaurantDetailsPage'
 import RestaurantFormPage from './pages/RestaurantFormPage'
 import MenuItemForm from './components/MenuItemForm'
+import MyRestaurantsPage from './pages/MyRestaurantsPage'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/restaurants/:restaurantId/edit" element={user ? <RestaurantFormPage user={user} /> : <Navigate to="/sign-in" />}/>
         <Route path="/restaurants/:restaurantId/menu-items" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
         <Route path="/restaurants/:restaurantId/menu-items/:menuItemId" element={user ? <MenuItemForm /> : <Navigate to="/sign-in" />}/>
+        <Route path="/my-restaurants" element={user ? <MyRestaurantsPage user={user} /> : <Navigate to="/sign-in" />} />
 
       </Routes>
     </div>
