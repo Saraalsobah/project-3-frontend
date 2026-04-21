@@ -27,36 +27,37 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-      {errorMessage && <p style={{ color: 'red' }} role="alert">{errorMessage}</p>}
+    <div className="sign-in-container">
+      <div className="style-border-form">
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn">Sign Up</button>
+        </form>
+        {errorMessage && <p style={{ color: 'red' }} role="alert">{errorMessage}</p>}
+      </div>
     </div>
   );
 }
-
 export default Signup;

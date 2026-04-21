@@ -1,3 +1,86 @@
+/* Color palette inspired by the provided design */
+:root {
+  --color-bg: #e6ecd7; /* soft green background */
+  --color-card: #fff; /* white cards */
+  --color-accent: #8a9a5b; /* olive/green accent */
+  --color-accent-dark: #6d7b3a; /* darker accent for buttons/icons */
+  --color-text: #222; /* main text */
+  --color-muted: #7d7d7d; /* muted text */
+  --color-border: #e0e0e0; /* light border */
+  --color-success: #b6d36b; /* light green for status */
+  --color-warning: #ffe082; /* yellow for warning */
+  --color-danger: #ffb4a2; /* soft red for danger */
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Card style for white containers */
+.card {
+  background: var(--color-card);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+}
+
+/* Accent text */
+.accent {
+  color: var(--color-accent);
+}
+
+/* Button style */
+.btn {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: var(--color-accent-dark);
+}
+
+/* Status badges */
+.status-success {
+  background: var(--color-success);
+  color: var(--color-accent-dark);
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+.status-warning {
+  background: var(--color-warning);
+  color: #7d6b00;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+.status-danger {
+  background: var(--color-danger);
+  color: #a23c2b;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+/* Utility classes */
+.muted {
+  color: var(--color-muted);
+}
+
+/* Add more styles as needed for your components */
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -182,3 +265,164 @@
     border-right-color: var(--border);
   }
 }
+
+.style-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-card);
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--color-accent);
+  box-shadow: 0 2px 8px rgba(138,154,91,0.06);
+}
+
+.style-header__item {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+.style-header__item:hover {
+  color: var(--color-accent-dark);
+}
+.style-header__user {
+  font-weight: bold;
+  color: var(--color-accent-dark);
+}
+.style-header__button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.style-header__button:hover {
+  background-color: var(--color-accent-dark);
+}
+}
+
+.style-header__item {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.style-header__item:hover {
+  color: var(--accent-hover);
+}
+
+.style-header__user {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.style-header__button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.style-header__button:hover {
+  background-color: var(--accent-hover);
+}
+
+.style-border-form {
+  border: 1px solid rgba(224,224,224,0.5); /* lighter, more subtle border */
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: var(--color-card);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.sign-in-container .style-border-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.sign-in-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+}
+
+.sign-in-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.sign-in-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.sign-in-container input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.sign-in-container .btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.sign-up-container .style-border-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.sign-up-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+}
+
+.sign-up-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.sign-up-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.sign-up-container input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
