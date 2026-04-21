@@ -5,6 +5,8 @@ import RestaurantCard from "../components/RestaurantCard"
 
 
 function RestaurantListPage({ user }) {
+  const [selectedCuisine, setSelectedCuisine] = useState("")
+  const [selectedLocation, setSelectedLocation] = useState("")
   const [restaurants, setRestaurants] = useState([])
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
@@ -23,9 +25,13 @@ function RestaurantListPage({ user }) {
     getAllRestaurants()
   }, [])
 
-   const filteredRestaurants = restaurants.filter((r) =>
-    r.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filteredRestaurants = restaurants.filter((r) => {
+  const matchesName = r.name.toLowerCase().includes(search.toLowerCase())
+  const matchesCuisine = selectedCuisine ? r.cuisine === selectedCuisine : true
+  const matchesLocation = selectedLocation ? r.location === selectedLocation : true
+
+  return matchesName && matchesCuisine && matchesLocation
+})
 
   return (
     <div>
@@ -37,6 +43,38 @@ function RestaurantListPage({ user }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
 />
+      <select value={selectedCuisine} onChange={(e) => setSelectedCuisine(e.target.value)}>
+        <option value="">All Cuisines</option>
+        <option value="Italian">Italian</option>
+        <option value="Indian">Indian</option>
+        <option value="Arabic">Arabic</option>
+        <option value="Mexican">Mexican</option>
+        <option value="American">American</option>
+        <option value="French">French</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Japanese">Japanese</option>
+      </select>
+
+      <select value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)}>
+        <option value="">All Locations</option>
+        <option value="Manama">Manama</option>
+        <option value="Sitra">Sitra</option>
+        <option value="Riffa">Riffa</option>
+        <option value="Juffair">Juffair</option>
+        <option value="Amwaj Islands">Amwaj Islands</option>
+        <option value="Saar">Saar</option>
+        <option value="Seef">Seef</option>
+        <option value="Muharraq">Muharraq</option>
+        <option value="Isa Town">Isa Town</option>
+        <option value="Budaiya">Budaiya</option>
+        <option value="Hidd">Hidd</option>
+        <option value="Sanad">Sanad</option>
+        <option value="Tubli">Tubli</option>
+        <option value="Adliya">Adliya</option>
+        <option value="Galali">Galali</option>
+        <option value="Arad">Arad</option>
+        <option value="Busaiteen">Busaiteen</option>
+      </select>
 
       <div>
         {filteredRestaurants.length === 0 ? (
