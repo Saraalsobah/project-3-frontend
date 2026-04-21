@@ -22,6 +22,13 @@ function MenuItemList({ menuItems, isOwner, restaurantId, refresh }) {
 
   return (
     <div>
+      {isOwner && (
+        <button
+          style={{ marginBottom: '1rem' }}
+          onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/new`)}>
+          Add Menu Item
+        </button>
+      )}
       <h2>Menu</h2>
 
       {menuItems.map((item) => (
