@@ -26,6 +26,7 @@ function MenuItemList({ menuItems, isOwner, restaurantId, refresh }) {
 
       {menuItems.map((item) => (
         <div key={item._id}>
+          <img src={item.imageUrl} alt={item.name} />
           <h3>{item.name}</h3>
           <p>{item.price} BHD</p>
           <p>{item.category}</p>

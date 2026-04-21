@@ -9,6 +9,7 @@ function MenuItemForm() {
 
   const [formData, setFormData] = useState({
     name: '',
+    imageUrl: '',
     price: '',
     category: ''
   })
@@ -54,6 +55,9 @@ function MenuItemForm() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Dish Name:</label>
         <input name="name" value={formData.name} onChange={handleChange} />
+
+        <label htmlFor="imageUrl">Dish Image URL:</label>
+        <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
 
         <label htmlFor="price">Price (BHD):</label>
         <input type="number" name="price" value={formData.price} onChange={handleChange} />
