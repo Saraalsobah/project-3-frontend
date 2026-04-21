@@ -8,6 +8,8 @@ import RestaurantListPage from './pages/RestaurantListPage'
 import RestaurantDetailsPage from './pages/RestaurantDetailsPage'
 import RestaurantFormPage from './pages/RestaurantFormPage'
 import MenuItemForm from './components/MenuItemForm'
+import './App.css';
+
 
 function App() {
   const [user, setUser] = useState(null);

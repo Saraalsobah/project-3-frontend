@@ -43,8 +43,8 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --olive-green: #708238; /* Olive green color */
   }
-
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
@@ -110,6 +110,9 @@ code {
   background: var(--code-bg);
 }
 
+:root {
+  --olive-green: #708238;
+}
 
 .nav-item{
   margin-right: 10px

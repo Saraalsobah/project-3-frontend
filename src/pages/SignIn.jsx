@@ -33,7 +33,8 @@ function SignIn({ setUser }) {
   };
 
   return (
-    <div>
+    <div className='sign-in-container'>
+      <div className="style-border-form">
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -58,9 +59,10 @@ function SignIn({ setUser }) {
             required
           />
         </div>
-        <button type="submit">Sign In</button>
+        <button type="submit" className="btn">Sign In</button>
       </form>
       {errorMessage && <p style={{ color: 'red' }} role="alert">{errorMessage}</p>}
+    </div>
     </div>
   );
 }
