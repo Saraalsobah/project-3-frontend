@@ -16,7 +16,7 @@ function MenuItemForm() {
    async function getMenuItemDetails() {
     const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}`)
     const menuItem = res.data.menuItems.find(function(item) {return item._id == menuItemId})
-    setFormData(menuItem)
+    setFormData(menuItem || { name: '', price: '', category: '' })
   }
 
   useEffect(() => {

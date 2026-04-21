@@ -43,7 +43,7 @@ function RestaurantDetailsPage({ user }) {
   const isOwner = user && restaurant.author?._id === user._id
 
   return (
-    <div>
+    <div className="restaurant-details-page">
       <img src={restaurant.logourl} alt={restaurant.name} />
       <h1>{restaurant.name}</h1>
       <p>{restaurant.cuisine}</p>
@@ -56,10 +56,6 @@ function RestaurantDetailsPage({ user }) {
           </button>
 
           <button onClick={handleDelete}>Delete</button>
-
-          <button onClick={() => navigate(`/restaurants/${restaurantId}/menu-items`)}>
-            Add Menu Item
-          </button>
         </>
       )}
 

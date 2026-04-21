@@ -426,3 +426,131 @@ body {
   outline: none;
 }
 
+.add-resturent-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: var(--color-bg);
+}
+
+.add-resturent-form .style-border-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.add-resturent-form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+}
+
+.add-resturent-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.add-resturent-form input,
+.add-resturent-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.add-resturent-form input:focus,
+.add-resturent-form textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.add-resturent-form .btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.restaurant-list-page {
+  padding: 40px 20px;
+  background-color: var(--color-bg);
+}
+
+.restaurant-list-page h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+}
+
+.restaurant-list-page input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  margin: 0 auto 2rem;
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.restaurant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.restaurant-card {
+  background: var(--color-card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.restaurant-card h2 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+.restaurant-card p {
+  color: var(--color-muted);
+}
+.restaurant-card .btn {
+  margin-top: 1rem;
+}
+
+.restaurant-details-page {
+  padding: 40px 20px;
+  background-color: var(--color-bg);
+}
+
+.restaurant-details-page img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.restaurant-details-page h1 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+.restaurant-details-page p {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+}
+
+.restaurant-details-page .btn {
+  margin-top: 1.5rem;
+}
+
+.style-border-form {
+  border: 1px solid rgba(224,224,224,0.5); /* lighter, more subtle border */
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: var(--color-card);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+

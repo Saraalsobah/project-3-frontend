@@ -66,9 +66,9 @@ function RestaurantFormPage() {
     
 
   return (
-    <div>
-       <h1>{restaurantId ? 'Edit Restaurant' : 'Add a Restaurant'}</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="add-resturent-form">
+      <form onSubmit={handleSubmit} className="style-border-form">
+        <h1>{restaurantId ? 'Edit Restaurant' : 'Add a Restaurant'}</h1>
 
         <label htmlFor="name">Restaurant Name:</label>
         <input name="name" value={formData.name} onChange={handleChange} placeholder="Restaurant Name"/>

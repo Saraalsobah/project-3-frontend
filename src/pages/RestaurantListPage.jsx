@@ -28,7 +28,7 @@ function RestaurantListPage({ user }) {
   )
 
   return (
-    <div>
+    <div className="restaurant-list-page">
       <h1>All Restaurants</h1>
 
       <input
@@ -38,7 +38,7 @@ function RestaurantListPage({ user }) {
         onChange={(e) => setSearch(e.target.value)}
 />
 
-      <div>
+      <div className="restaurant-list">
         {filteredRestaurants.length === 0 ? (
           <p>No restaurants found</p>
           ) : (
