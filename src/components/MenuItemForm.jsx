@@ -49,18 +49,18 @@ function MenuItemForm() {
   }
 
   return (
+    <div className="add-resturent-form">
+      <form onSubmit={handleSubmit} className="style-border-form">
+        <h1>{menuItemId ? 'Edit Dish' : 'Add New Dish'}</h1>
 
-    <div>
-      <h1>{menuItemId ? 'Edit Dish' : 'Add New Dish'}</h1>
-      <form onSubmit={handleSubmit}>
         <label htmlFor="name">Dish Name:</label>
-        <input name="name" value={formData.name} onChange={handleChange} />
+        <input name="name" value={formData.name} onChange={handleChange} placeholder="Dish Name" />
 
         <label htmlFor="imageUrl">Dish Image URL:</label>
-        <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+        <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="Image URL" />
 
         <label htmlFor="price">Price (BHD):</label>
-        <input type="number" name="price" value={formData.price} onChange={handleChange} />
+        <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" />
 
         <label htmlFor="category">Category:</label>
         <select name="category" value={formData.category} onChange={handleChange}>
@@ -71,7 +71,7 @@ function MenuItemForm() {
           <option value="Drink">Drink</option>
           <option value="Side">Side</option>
         </select>
-        
+
         <button type="submit">{menuItemId ? 'Save Changes' : 'Add to Menu'}</button>
         <button type="button" onClick={() => navigate(`/restaurants/${restaurantId}`)}>Cancel</button>
       </form>
