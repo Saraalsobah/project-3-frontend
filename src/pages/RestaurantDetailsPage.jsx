@@ -7,6 +7,7 @@ function RestaurantDetailsPage({ user }) {
   const { restaurantId } = useParams()
   const navigate = useNavigate()
 
+  
   const [restaurant, setRestaurant] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
 
@@ -24,11 +25,11 @@ function RestaurantDetailsPage({ user }) {
     getRestaurant()
   }, [])
 
-  async function handleDelete() {
+  async function handleDelete(item_id) {
     try {
       const token = localStorage.getItem("token")
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${restaurantId}`,
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/restaurants/${item_id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       setShowConfirm(false)
@@ -50,23 +51,23 @@ function RestaurantDetailsPage({ user }) {
       <p>{restaurant.cuisine}</p>
       <p>{restaurant.location}</p>
 
+
       {isOwner && (
         <>
           <button onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
             Edit
           </button>
-
-          <button onClick={handleDelete}>Delete</button>
           <button onClick={() => setShowConfirm(true)}>Delete</button>
           {showConfirm && (
             <div>
               <p>Are you sure you want to delete?</p>
-
               <button onClick={handleDelete}>Yes</button>
               <button onClick={() => setShowConfirm(false)}>Cancel</button>
             </div>
           )}
-          <button onClick={() => navigate(`/restaurants/${restaurantId}/menu-items`)}>
+          <button
+            style={{ marginBottom: '1rem' }}
+            onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/new`)}>
             Add Menu Item
           </button>
         </>

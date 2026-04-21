@@ -22,29 +22,21 @@ function MenuItemList({ menuItems, isOwner, restaurantId, refresh }) {
 
   return (
     <div>
-      {isOwner && (
-        <button
-          style={{ marginBottom: '1rem' }}
-          onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/new`)}>
-          Add Menu Item
-        </button>
-      )}
       <h2>Menu</h2>
-
       {menuItems.map((item) => (
         <div key={item._id}>
           <img src={item.imageUrl} alt={item.name} />
           <h3>{item.name}</h3>
           <p>{item.price} BHD</p>
           <p>{item.category}</p>
-
           {isOwner && (
             <>
               <button onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/${item._id}`)}>
                 Edit
               </button>
-
-              <button onClick={() => handleDelete(item._id)}> Delete </button>
+              <button onClick={() => handleDelete(item._id)}>
+                Delete
+              </button>
             </>
           )}
         </div>
