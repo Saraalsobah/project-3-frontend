@@ -2,14 +2,14 @@ import { Link } from "react-router"
 
 function RestaurantCard({ restaurant }) {
   return (
-    <div>
+    <div className="restaurant-card">
       <img src={restaurant.logourl} alt={restaurant.name} />
-
-      <h3>{restaurant.name}</h3>
-      <p>{restaurant.cuisine}</p>
-      <p>{restaurant.location}</p>
-
-      <Link to={`/restaurants/${restaurant._id}`}>See Details</Link>
+      <div className="restaurant-card-body">
+        <h3>{restaurant.name}</h3>
+        <p>{restaurant.cuisine}</p>
+        <p>{restaurant.location}</p>
+        <Link to={`/restaurants/${restaurant._id}`}>See Details</Link>
+      </div>
     </div>
   )
 }

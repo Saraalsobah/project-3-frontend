@@ -36,7 +36,9 @@ function RestaurantListPage({ user }) {
   return (
     <div className="restaurant-list-page">
       <h1>All Restaurants</h1>
+      <br />
 
+    <div className="restaurant-list-filters">
       <input
         type="text"
         placeholder="973Bites"
@@ -75,8 +77,8 @@ function RestaurantListPage({ user }) {
         <option value="Arad">Arad</option>
         <option value="Busaiteen">Busaiteen</option>
       </select>
-
-      <div className="restaurant-list">
+    </div>
+      <div className="restaurant-grid">
         {filteredRestaurants.length === 0 ? (
           <p>No restaurants found</p>
           ) : (
@@ -86,7 +88,10 @@ function RestaurantListPage({ user }) {
         )}
       </div>
       {user && (
-        <button onClick={() => navigate("/restaurants/new")}> Add a Restaurant </button>
+        <div className="restaurant-list-page .add-btn-wrapper">
+          <button className="btn" onClick={() => navigate("/restaurants/new")}> Add a Restaurant </button>
+        </div>
+        
       )}
     </div>
   )

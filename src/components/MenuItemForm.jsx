@@ -49,31 +49,42 @@ function MenuItemForm() {
   }
 
   return (
-    <div className="add-menu-item-form">
-      <form onSubmit={handleSubmit} className="style-border-form">
+    <div className="form-page">
+      <form onSubmit={handleSubmit} className="form-container">
         <h1>{menuItemId ? 'Edit Dish' : 'Add New Dish'}</h1>
 
-        <label htmlFor="name">Dish Name:</label>
-        <input name="name" value={formData.name} onChange={handleChange} placeholder="Dish Name" />
+        <div className="form-group">
+          <label htmlFor="name">Dish Name:</label>
+          <input name="name" value={formData.name} onChange={handleChange} placeholder="Dish Name" />
+        </div>
 
-        <label htmlFor="imageUrl">Dish Image URL:</label>
-        <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="Image URL" />
+        <div className="form-group">
+          <label htmlFor="imageUrl">Dish Image URL:</label>
+          <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="Image URL" />
+        </div>
 
-        <label htmlFor="price">Price (BHD):</label>
-        <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" />
+        <div className="form-group">
+          <label htmlFor="price">Price (BHD):</label>
+          <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" />
+        </div>
 
-        <label htmlFor="category">Category:</label>
-        <select name="category" value={formData.category} onChange={handleChange}>
-          <option value="">Select a category</option>
-          <option value="Appetizer">Appetizer</option>
-          <option value="Main">Main</option>
-          <option value="Dessert">Dessert</option>
-          <option value="Drink">Drink</option>
-          <option value="Side">Side</option>
-        </select>
-
-        <button type="submit">{menuItemId ? 'Save Changes' : 'Add to Menu'}</button>
-        <button type="button" onClick={() => navigate(`/restaurants/${restaurantId}`)}>Cancel</button>
+        <div className="form-group">
+          <label htmlFor="category">Category:</label>
+          <select name="category" value={formData.category} onChange={handleChange}>
+            <option value="">Select a category</option>
+            <option value="Appetizer">Appetizer</option>
+            <option value="Main">Main</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Drink">Drink</option>
+            <option value="Side">Side</option>
+          </select>
+        </div>
+      
+        <div className="form-actions">
+          <button type="submit" className="btn">{menuItemId ? 'Save Changes' : 'Add to Menu'}</button>
+          <button type="button" className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}`)}>Cancel</button>
+        </div>
+        
       </form>
     </div>
   )

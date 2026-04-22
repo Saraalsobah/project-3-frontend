@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -27,11 +27,11 @@ function Signup() {
   };
 
   return (
-    <div className="sign-in-container">
-      <div className="style-border-form">
+    <div className="form-page">
+      <div className="form-container">
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
               id="username"
@@ -42,7 +42,7 @@ function Signup() {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
               id="password"
@@ -53,9 +53,12 @@ function Signup() {
               required
             />
           </div>
-          <button type="submit" className="btn">Sign Up</button>
+          <div className="form-actions">
+            <button type="submit" className="btn">Sign Up</button>
+          </div>
         </form>
-        {errorMessage && <p style={{ color: 'red' }} role="alert">{errorMessage}</p>}
+        {errorMessage && <p className="error-message" role="alert">{errorMessage}</p>}
+        <p className="form-link">Already have an account? <Link to="/sign-in">Sign In</Link></p>
       </div>
     </div>
   );

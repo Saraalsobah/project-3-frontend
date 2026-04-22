@@ -28,12 +28,17 @@ function MyRestaurantsPage({ user }) {
 
 
   return (
-    <div>
-        <h1>My Restaurants</h1>
-      {restaurants.length === 0 ? <p>You haven't added any restaurants yet.</p> : restaurants.map(restaurant => (
-          <RestaurantCard key={restaurant._id} restaurant={restaurant} />))
+   <div className="my-restaurants-page">
+      <h1>My Restaurants</h1>
+      <button className="btn" onClick={() => navigate('/restaurants/new')}>Add a Restaurant</button>
+      {restaurants.length === 0
+        ? <p>You haven't added any restaurants yet.</p>
+        : <div className="restaurant-grid">
+            {restaurants.map(function(restaurant) {
+              return <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+            })}
+          </div>
       }
-      <button onClick={() => navigate('/restaurants/new')}>Add a Restaurant</button>
     </div>
   )
 }
