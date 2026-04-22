@@ -32,7 +32,7 @@ function App() {
     <div>
       <Navbar user={user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage user={user} />} />
         <Route path="/sign-up" element={!user ? <SignUp /> : <Navigate to="/restaurants" />} />
         <Route path="/sign-in" element={!user ? <SignIn setUser={setUser} /> : <Navigate to="/restaurants" />} />
         <Route path="/restaurants" element={<RestaurantListPage />} />

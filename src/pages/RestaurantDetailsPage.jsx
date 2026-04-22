@@ -45,28 +45,33 @@ function RestaurantDetailsPage({ user }) {
   const isOwner = user && restaurant.author?._id === user._id
 
   return (
-    <div>
-      <img src={restaurant.logourl} alt={restaurant.name} />
-      <h1>{restaurant.name}</h1>
-      <p>{restaurant.cuisine}</p>
-      <p>{restaurant.location}</p>
+    <div className="restaurant-details-page">
+      <div className="restaurant-details-header">
+        <img src={restaurant.logourl} alt={restaurant.name} />
+      </div>
+      <div className="restaurant-details-info">
+        <h1>{restaurant.name}</h1>
+        <p><strong>Cuisine:</strong> {restaurant.cuisine}</p>
+        <p><strong>Location:</strong> {restaurant.location}</p>
+      </div>
+      
 
       {isOwner && (
-        <>
-          <button onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
+        <div className="restaurant-details-actions">
+          <button className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
             Edit Restaurant
           </button>
 
           {!showConfirm ? (
-            <button onClick={() => setShowConfirm(true)}>Delete Restaurant</button>
+            <button className="btn-danger" onClick={() => setShowConfirm(true)}>Delete Restaurant</button>
           ) : (
-            <div className="confirmation-box">
+            <div className="confirm-delete">
               <p>Are you sure you want to delete?</p>
-              <button onClick={handleDelete}>Yes, Delete</button>
-              <button onClick={() => setShowConfirm(false)}>Cancel</button>
+              <button className="btn-danger" onClick={handleDelete}>Yes, Delete</button>
+              <button className="btn-secondary" onClick={() => setShowConfirm(false)}>Cancel</button>
             </div>
           )}
-        </>
+        </div>
       )}
 
       <MenuItemList

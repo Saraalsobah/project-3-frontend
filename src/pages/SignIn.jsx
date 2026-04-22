@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link} from 'react-router';
 
 function SignIn({ setUser }) {
   const [formData, setFormData] = useState({
@@ -33,36 +33,39 @@ function SignIn({ setUser }) {
   };
 
   return (
-    <div className='sign-in-container'>
-      <div className="style-border-form">
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">Sign In</button>
-      </form>
-      {errorMessage && <p style={{ color: 'red' }} role="alert">{errorMessage}</p>}
-    </div>
+    <div className="form-page">
+      <div className="form-container">
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-actions">
+            <button type="submit" className="btn">Sign In</button>
+          </div>
+        </form>
+        {errorMessage && <p className="error-message" role="alert">{errorMessage}</p>}
+        <p className="form-link">Don't have an account? <Link to="/sign-up">Sign Up</Link></p>
+      </div>
     </div>
   );
 }

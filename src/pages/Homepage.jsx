@@ -12,25 +12,27 @@ function HomePage({ user }) {
   }
 
   return (
-    <div className="homepage-container card" style={{ maxWidth: '600px', margin: '3rem auto', textAlign: 'center' }}>
-      <h1 style={{ color: 'var(--color-accent)', fontWeight: 800, fontSize: '2.5rem', marginBottom: '0.5rem' }}>973Bites</h1>
-      <h5 style={{ color: 'var(--color-accent-dark)', fontWeight: 600, marginBottom: '1.5rem' }}>Find the best restaurants, explore their menus, and enjoy great food!</h5>
+    <div className="home-page">
+      <h1 className="home-title">973Bites</h1>
+      <h5 className="home-tagline">Find the best restaurants, explore their menus, and enjoy great food!</h5>
 
-      <p className="homepage-description" style={{ color: 'var(--color-muted)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '2.5rem', background: 'var(--color-bg)', borderRadius: '1rem', padding: '1.2rem 1.5rem', boxShadow: '0 1px 6px rgba(138,154,91,0.04)' }}>
+      <p className="home-description">
         A restaurant discovery platform specifically for Bahrain. Restaurant owners can create listings and manage their digital menus, while food lovers can browse a variety of local dining options, and explore their menus. Whether you know exactly what you're craving or need a little inspiration, 973Bites makes finding your next meal easy.
       </p>
 
-      <button onClick={() => navigate("/restaurants")}>Browse Restaurants</button>
+      <button className="btn" onClick={() => navigate("/restaurants")}>Browse Restaurants</button>
 
-      <h3>Feeling Indecisive?</h3>
-      <p>Can't decide where to eat today? Let us choose a local favorite for you!</p>
-      <button onClick={handleRandom}>Pick a Random Restaurant</button>
+      <div className="home-random card">
+        <h3>Feeling Indecisive?</h3>
+        <p>Can't decide where to eat today? Let us choose a local favorite for you!</p>
+        <button className="btn" onClick={handleRandom}>Pick a Random Restaurant</button>
+      </div>
 
       {!user && (
-        <>
+        <div className="home-join card">
           <p>Own a restaurant in Bahrain? Join our community.</p>
-          <button onClick={() => navigate("/sign-up")}>Register Your Business</button>
-        </>
+          <button className="btn" onClick={() => navigate("/sign-up")}>Register Your Business</button>
+        </div>
       )}
     </div>
   )
