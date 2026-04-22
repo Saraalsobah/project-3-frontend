@@ -9,15 +9,20 @@ function RestaurantListPage({ user }) {
   const [selectedLocation, setSelectedLocation] = useState("")
   const [restaurants, setRestaurants] = useState([])
   const [search, setSearch] = useState("")
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   async function getAllRestaurants() {
     try {
+      setLoading(true)
       const getAllRestaurants = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/restaurants`)
       setRestaurants(getAllRestaurants.data)
     } 
     catch (err) {
       console.log(err)
+    }
+    finally {
+      setLoading(false)
     }
   }
 
@@ -78,6 +83,10 @@ function RestaurantListPage({ user }) {
         <option value="Busaiteen">Busaiteen</option>
       </select>
     </div>
+
+    {loading ? (
+        <p>Loading...</p>
+      ) : (
       <div className="restaurant-grid">
         {filteredRestaurants.length === 0 ? (
           <p>No restaurants found</p>
@@ -87,6 +96,7 @@ function RestaurantListPage({ user }) {
           ))
         )}
       </div>
+      )}
       {user && (
         <div className="restaurant-list-page .add-btn-wrapper">
           <button className="btn" onClick={() => navigate("/restaurants/new")}> Add a Restaurant </button>

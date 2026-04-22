@@ -5,10 +5,12 @@ import RestaurantCard from '../components/RestaurantCard'
 
 function MyRestaurantsPage({ user }) {
     const [restaurants, setRestaurants] = useState([])
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     async function getMyRestaurants(){
         try{
+            setLoading(true)
             const token = localStorage.getItem('token')
             const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/restaurants`, {headers: { Authorization: `Bearer ${token}` }})
             const allRestaurants = res.data
@@ -19,6 +21,9 @@ function MyRestaurantsPage({ user }) {
         }
         catch(err){
             console.log(err)
+        }
+        finally {
+            setLoading(false)
         }
     }
 
@@ -31,14 +36,17 @@ function MyRestaurantsPage({ user }) {
    <div className="my-restaurants-page">
       <h1>My Restaurants</h1>
       <button className="btn" onClick={() => navigate('/restaurants/new')}>Add a Restaurant</button>
-      {restaurants.length === 0
-        ? <p>You haven't added any restaurants yet.</p>
-        : <div className="restaurant-grid">
+      {loading ? (
+        <p>Loading...</p>
+      ) : restaurants.length === 0 ? (
+        <p>You haven't added any restaurants yet.</p>
+      ) : (
+            <div className="restaurant-grid">
             {restaurants.map(function(restaurant) {
               return <RestaurantCard key={restaurant._id} restaurant={restaurant} />
             })}
           </div>
-      }
+        )}
     </div>
   )
 }
