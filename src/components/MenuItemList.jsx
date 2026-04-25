@@ -48,7 +48,7 @@ function MenuItemList({ menuItems, isOwner, restaurantId, refresh }) {
                     </div>
                     {isOwner && (
                       <div className="menu-item-actions">
-                        <button className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/${item._id}/edit`)}>
+                        <button className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}/menu-items/${item._id}`)}>
                           Edit
                         </button>
                         <button className="btn-danger" onClick={() => handleDelete(item._id)}>
