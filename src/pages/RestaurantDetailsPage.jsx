@@ -58,12 +58,15 @@ function RestaurantDetailsPage({ user }) {
 
       {isOwner && (
         <div className="restaurant-details-actions">
-          <button className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
-            Edit Restaurant
-          </button>
-
           {!showConfirm ? (
-            <button className="btn-danger" onClick={() => setShowConfirm(true)}>Delete Restaurant</button>
+            <>
+              <button className="btn-secondary" onClick={() => navigate(`/restaurants/${restaurantId}/edit`)}>
+                Edit Restaurant
+              </button>
+              <button className="btn-danger" onClick={() => setShowConfirm(true)}>
+                Delete Restaurant
+              </button>
+            </>
           ) : (
             <div className="confirm-delete">
               <p>Are you sure you want to delete?</p>
