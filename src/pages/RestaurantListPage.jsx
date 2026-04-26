@@ -98,7 +98,7 @@ function RestaurantListPage({ user }) {
       </div>
       )}
       {user && (
-        <div className="restaurant-list-page .add-btn-wrapper">
+        <div className="add-btn-wrapper">
           <button className="btn" onClick={() => navigate("/restaurants/new")}> Add a Restaurant </button>
         </div>
         

@@ -9,14 +9,17 @@
 
 /* ===== VARIABLES ===== */
 :root {
-  --color-bg: #fffaf3;
-  --color-card: #fff8ee;
-  --color-accent: #e77728;
+  --font-body: "Lato", sans-serif;
+  --font-display: "Abril Fatface", serif;
+  --color-bg: #fcfaf7;
+  --color-card: #fff4ee;
+  --color-accent: #c52c06;
   --color-accent-hover: #edb230;
   --color-highlight: #ffd151;
-  --color-text: #1a1a1a;
-  --color-muted: #888888;
-  --color-border: #f0e0cc;
+  --color-accent-bright: #edb230;
+  --color-text: #3a001e;
+  --color-muted: #56423c;
+  --color-border: #f0decc;
   --color-danger: #DD0303;
   --color-danger-hover: #b30000;
   --radius: 1rem;
@@ -27,14 +30,24 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.5;
   min-height: 100vh;
 }
-
-h1 {
-  font-family: 'Abril Fatface', cursive;
+button, input, select, textarea {
+  font-family: var(--font-body);
 }
-
+h1, h2, h3 { 
+  font-family: var(--font-display); 
+  font-weight: 400; 
+}
+h1 { color: var(--color-accent); }
+a { 
+  color: var(--color-accent); 
+  text-decoration: none; 
+  transition: color 0.2s; 
+}
+a:hover { color: var(--color-accent-hover); }
 img {
   max-width: 100%;
   border-radius: var(--radius);
@@ -99,7 +112,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   background: var(--color-card);
   border-bottom: 2px solid var(--color-accent);
   box-shadow: var(--shadow);
@@ -114,11 +127,6 @@ nav a {
 nav a:hover {
   color: var(--color-accent-hover);
 }
-.nav-logo {
-  font-family: 'Abril Fatface', cursive;
-  font-size: 1.3rem;
-  margin-right: auto;
-}
 nav button {
   background: var(--color-accent);
   color: #fff;
@@ -132,44 +140,86 @@ nav button {
 nav button:hover {
   background: var(--color-accent-hover);
 }
+.nav-logo {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.nav-logo img {
+  height: 3rem;      
+  width: auto;
+  display: block;
+  object-fit: contain; 
+  margin: -0.5rem 0;  
+}
+nav span { 
+  font-weight: 600; 
+  color: var(--color-muted); 
+  margin: 0 1rem; 
+}
 
 /* ===== HOME PAGE ===== */
 .home-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 3rem 1.5rem;
-  max-width: 700px;
+  padding: 4rem 1.5rem;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
-.home-title {
-  font-family: 'Abril Fatface', cursive;
-  font-size: 3rem;
-  color: var(--color-accent);
+.home-logo {
+  width: 280px;       
+  height: auto;
+  margin-bottom: -20px; 
+  margin-top: -20px;   
+  align-self: center;   
+  display: block;
 }
 .home-tagline {
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--color-text);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 .home-description {
+  line-height: 1.8;
+  font-size: 1.1rem;
   color: var(--color-muted);
-  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
 }
-.home-random {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
+.home-description + .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  align-self: center;
+  display: block; 
+  margin: 0 auto;
 }
-.home-cta {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
+.home-random, 
+.home-join {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.home-random:hover, 
+.home-join:hover {
+  transform: translateY(-3px);
+}
+.home-random h3, 
+.home-join h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+.home-random p, 
+.home-join p {
+  margin-bottom: 1.2rem;
+  color: var(--color-muted);
 }
 
 /* ===== RESTAURANT LIST PAGE ===== */
@@ -183,21 +233,6 @@ nav button:hover {
   color: var(--color-accent);
   margin-bottom: 1.5rem;
 }
-.restaurant-list-page input {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 2rem;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 2rem;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.restaurant-list-page input:focus {
-  border-color: var(--color-accent);
-}
 .restaurant-list-page .add-btn-wrapper {
   display: flex;
   justify-content: center;
@@ -205,10 +240,12 @@ nav button:hover {
 }
 .restaurant-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
 }
-
+@media (min-width: 1100px) {
+  .restaurant-grid { grid-template-columns: repeat(3, 1fr); }
+}
 .restaurant-list-filters {
   display: flex;
   gap: 1rem;
@@ -216,19 +253,31 @@ nav button:hover {
   flex-wrap: wrap;
   margin-bottom: 2rem;
 }
-
 .restaurant-list-filters select {
   padding: 0.6rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 2rem;
-  font-size: 1rem;
+  font: 1rem/1.3 var(--font-body);
   outline: none;
   background: var(--color-card);
   cursor: pointer;
 }
-
 .restaurant-list-filters select:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-bright);
+}
+.restaurant-list-filters input {
+  flex: 1 1 12rem;
+  max-width: 22rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  font: 1rem/1.3 var(--font-body);
+  outline: none;
+  background: var(--color-card);
+  transition: border-color 0.2s;
+}
+.restaurant-list-filters input:focus {
+  border-color: var(--color-accent-bright);
 }
 
 /* ===== RESTAURANT CARD ===== */
@@ -261,6 +310,7 @@ nav button:hover {
 }
 .restaurant-card h3 {
   color: var(--color-accent);
+  font-size: 1.1rem;
   margin: 0;
 }
 .restaurant-card p {
@@ -290,32 +340,34 @@ nav button:hover {
 }
 .restaurant-details-header {
   display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 .restaurant-details-header img {
-  width: 140px;
-  height: 140px;
+  width: 9rem;
+  height: 9rem;
   object-fit: cover;
   border-radius: var(--radius);
-  align-items: center;
 }
 .restaurant-details-info {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
 }
 .restaurant-details-info h1 {
-  color: var(--color-accent);
+  color: var(--color-text);
   margin: 0;
 }
 .restaurant-details-info p {
   color: var(--color-text);
   margin: 0;
 }
+.restaurant-details-info strong { color: var(--color-accent); }
 .restaurant-details-actions {
   display: flex;
   justify-content: center;
@@ -327,11 +379,14 @@ nav button:hover {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  max-width: 28rem;
+  margin: 0 auto;
 }
 
 /* ===== MENU ITEMS ===== */
@@ -341,6 +396,9 @@ nav button:hover {
   gap: 1.5rem;
 }
 .menu-category h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--color-accent);
   border-bottom: 2px solid var(--color-border);
   padding-bottom: 0.4rem;
@@ -352,6 +410,7 @@ nav button:hover {
   align-items: center;
   padding: 0.75rem 1rem;
   background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   margin-bottom: 0.5rem;
   flex-wrap: wrap;
@@ -364,7 +423,7 @@ nav button:hover {
 }
 .menu-item-info h4 {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 .menu-item-info p {
   margin: 0;
@@ -376,13 +435,12 @@ nav button:hover {
   gap: 0.5rem;
 }
 .menu-item img {
-  width: 150px;
-  height: 150px;
+  width: 5rem;
+  height: 5rem;
   object-fit: cover;
   border-radius: 0.5rem;
   flex-shrink: 0;
 }
-
 .menu-section .btn {
   width: auto;
 }
@@ -400,6 +458,11 @@ nav button:hover {
   padding: 2rem;
   width: 100%;
   max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-container form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -427,12 +490,13 @@ nav button:hover {
   outline: none;
   transition: border-color 0.2s;
   width: 100%;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
 }
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--color-accent);
+  background: #fff;
 }
 .form-actions {
   display: flex;
@@ -468,9 +532,7 @@ nav button:hover {
 }
 .my-restaurants-page h1 {
   color: var(--color-accent);
-  margin-bottom: 1.5rem;
 }
-
 .my-restaurants-page p {
   color: var(--color-muted);
   margin-top: 1rem;

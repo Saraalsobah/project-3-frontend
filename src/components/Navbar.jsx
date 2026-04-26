@@ -10,8 +10,7 @@ function Navbar({ user, setUser }) {
     <nav>
       {/* Routes seen by everyone */}
       <Link className="nav-logo" to="/">
-        973Bites
-      </Link>
+        <img src="/logo.png" alt="973Bites Logo" />      </Link>
       <Link to="/restaurants">
         Restaurants
       </Link>
