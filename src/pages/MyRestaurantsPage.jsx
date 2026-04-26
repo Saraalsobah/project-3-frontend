@@ -34,8 +34,11 @@ function MyRestaurantsPage({ user }) {
 
   return (
    <div className="my-restaurants-page">
+    <div className="my-restaurants-header">
       <h1>My Restaurants</h1>
       <button className="btn" onClick={() => navigate('/restaurants/new')}>Add a Restaurant</button>
+    </div>
+      
       {loading ? (
         <p>Loading...</p>
       ) : restaurants.length === 0 ? (

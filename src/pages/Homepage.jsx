@@ -13,7 +13,8 @@ function HomePage({ user }) {
 
   return (
     <div className="home-page">
-      <h1 className="home-title">973Bites</h1>
+      <img src="/logo.png" alt="973Bites Logo" className="home-logo" />
+
       <h5 className="home-tagline">Find the best restaurants, explore their menus, and enjoy great food!</h5>
 
       <p className="home-description">
@@ -22,14 +23,14 @@ function HomePage({ user }) {
 
       <button className="btn" onClick={() => navigate("/restaurants")}>Browse Restaurants</button>
 
-      <div className="home-random card">
+      <div className="home-random ">
         <h3>Feeling Indecisive?</h3>
         <p>Can't decide where to eat today? Let us choose a local favorite for you!</p>
         <button className="btn" onClick={handleRandom}>Pick a Random Restaurant</button>
       </div>
 
       {!user && (
-        <div className="home-join card">
+        <div className="home-join ">
           <p>Own a restaurant in Bahrain? Join our community.</p>
           <button className="btn" onClick={() => navigate("/sign-up")}>Register Your Business</button>
         </div>
